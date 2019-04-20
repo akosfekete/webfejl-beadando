@@ -1,0 +1,31 @@
+@import "../../../styles"
+
+.mat-expansion-panel
+  max-width: 600px
+  margin: $default-margin
+  background-color: antiquewhite
+  img
+    max-width: 100px
+  button
+    background-color: aliceblue
+
+mat-accordion
+  width: 50%
+
+#cart
+  +flex-layout-default(column, center)
+  background-color: white
+
+.cart-item-details, .cart-items
+  +flex-layout-default(row, space-between)
+
+.cart-items
+  margin-top: $default-margin
+
+.cart-item-details
+  flex-direction: column
+  margin: $default-margin
+
+.cart-items
+  input
+    max-width: 50px

@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CartComponent } from "./component/cart/cart.component";
 import { ProductComponent } from "./component/product/product.component";
+import {ProductDetailsComponent} from "./component/product-details/product-details.component";
 
 const routes: Routes = [
   { path: '', component: ProductComponent },
   { path: 'products', component: ProductComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'details', component: ProductDetailsComponent },
   { path: '*', redirectTo: '' }
 ];
 

@@ -1,29 +1,43 @@
-<h3>Cart Info</h3>
-<table border="1">
-  <tr>
-    <th>Option</th>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Photo</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <th>Sub Total</th>
-  </tr>
-  <tr *ngFor="let item of items">
-    <td align="center">
-      <a (click)="remove(item.product.id)">X</a>
-    </td>
-    <td>{{item.product.id}}</td>
-    <td>{{item.product.name}}</td>
-    <td>
-      <img src="assets/http://learningprogramming.net/wp-content/uploads/mean_stack/angular/{{item.product.photo}}" width="50">
-    </td>
-    <td>{{item.product.price}}</td>
-    <td>{{item.quantity}}</td>
-    <td>{{item.product.price * item.quantity}}</td>
-  </tr>
-  <tr>
-    <td colspan="6" align="right">Total</td>
-    <td>{{total}}</td>
-  </tr>
-</table>
+<div id="cart">
+  <mat-accordion class="headers-align">
+    <mat-expansion-panel *ngFor="let item of items">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{item.product.name}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon (click)="remove(item.product.id)">delete_outline</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="cart-items">
+        <div class="cart-item-details">
+          <img src="assets/images/{{item.product.photo}}"/>
+        </div>
+        <div class="cart-item-details">
+          <p>Price</p>
+          <p>{{item.product.price}}</p>
+        </div>
+        <div class="cart-item-details">
+          <p>Total price</p>
+          <p>{{item.product.price * item.quantity}}</p>
+        </div>
+        <div class="cart-item-details">
+          <p>Description</p>
+          <p>{{item.product.description}}</p>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="cart-items">
+        <div>
+          <label for="quantity">Quantity: </label>
+          <input type="number" [(ngModel)]="item.quantity" name="quantity" id="quantity">
+        </div>
+        <button mat-button [routerLink]="['/details', {id: item.product.id}]">DETAILS</button>
+      </div>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+  <button *ngIf="items.length > 0" mat-button routerLink="#">PAY</button>
+</div>
