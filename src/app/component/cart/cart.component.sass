@@ -1,7 +1,8 @@
 @import "../../../styles"
 
+$cart-width: 70%
+
 .mat-expansion-panel
-  max-width: 600px
   margin: $default-margin
   background-color: antiquewhite
   img
@@ -10,11 +11,11 @@
     background-color: aliceblue
 
 mat-accordion
-  width: 50%
+  width: $cart-width
 
 #cart
   +flex-layout-default(column, center)
-  background-color: white
+  margin: $default-margin
 
 .cart-item-details, .cart-items
   +flex-layout-default(row, space-between)
@@ -29,3 +30,9 @@ mat-accordion
 .cart-items
   input
     max-width: 50px
+
+#pay-button
+  +flex-layout-default(row, space-between)
+  align-content: flex-end
+  align-items: flex-end
+  width: $cart-width

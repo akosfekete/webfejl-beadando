@@ -32,12 +32,16 @@
       <div class="cart-items">
         <div>
           <label for="quantity">Quantity: </label>
-          <input type="number" [(ngModel)]="item.quantity" name="quantity" id="quantity">
+          <input #quantity type="number" (click)="changeQuantity(item.product.id, quantity.value)" [(ngModel)]="item.quantity" name="quantity" id="quantity">
         </div>
         <button mat-button [routerLink]="['/details', {id: item.product.id}]">DETAILS</button>
       </div>
 
     </mat-expansion-panel>
   </mat-accordion>
-  <button *ngIf="items.length > 0" mat-button routerLink="#">PAY</button>
+  <mat-divider></mat-divider>
+  <div id="pay-button">
+    <p>TOTAL: {{total}}</p>
+    <button *ngIf="items.length > 0" mat-raised-button routerLink="#">PAY</button>
+  </div>
 </div>

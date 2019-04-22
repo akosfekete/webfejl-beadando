@@ -11,7 +11,18 @@ import {AuthService} from "../../service/auth.service";
 })
 export class SignupComponent implements OnInit {
 
-  model: User = { username: "admin", password: "admin"};
+  model: User = {
+    username: 'admin',
+    password: 'admin',
+    gender: true,
+    email: 'admin@admin.com',
+    profilePic: 'profile_pic.jpg',
+    description: 'Possession crushes listeners beneath pounding, repetitive rhythms comprised of mountainous ' +
+      'drums, thick guitars, and - idiosyncratically - jazzy alto saxophone courtesy of John Zorn. ' +
+      'The record\'s bludgeoning, soulless attack is reminiscent of Godflesh, though the experimental ' +
+      'underpinnings distinguish it. "Black Jesus", a noisy, haunting atmospheric piece, exemplifies ' +
+      'this, as do the assorted free jazz influences.'
+  };
   loginForm: FormGroup;
   message: string;
   returnUrl: string;
@@ -37,12 +48,8 @@ export class SignupComponent implements OnInit {
     } else {
       if (this.f.userid.value == this.model.username && this.f.password.value == this.model.password) {
         console.log('User succesful');
-        let user: User = new class implements User {
-          password: string;
-          username: string;
-        };
-        user.username = this.f.userid.value;
-        user.password = this.f.password.value;
+        let user = this.model;
+
         this.authService.login(user);
 
         this.router.navigate([this.returnUrl]);

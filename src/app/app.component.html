@@ -8,13 +8,13 @@
       <a mat-list-item routerLink="/products" routerLinkActive="active">Products</a>
       <a mat-list-item routerLink="/cart" routerLinkActive="active">Cart</a>
    <!--   <ng-template *ngIf="(isLoggedIn$ | async); else elseDiv;">
-        <a mat-list-item href="#">{{authService.getUserName()}}</a>
+        <a mat-list-item href="#">{{authService.getUser()}}</a>
       </ng-template>
       <ng-template #elseDiv>
         <a mat-list-item routerLink="/signup" routerLinkActive="active">Log in</a>
       </ng-template>-->
       <a mat-list-item routerLink="/signup" routerLinkActive="active" *ngIf="!(isLoggedIn$ | async);">Log in</a>
-      <a mat-list-item routerLink="/dashboard" routerLinkActive="active" *ngIf="(isLoggedIn$ | async);">{{authService.getUserName()}}</a>
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="active" *ngIf="(isLoggedIn$ | async);">{{authService.getUser().username}}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

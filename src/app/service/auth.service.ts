@@ -34,7 +34,7 @@ export class AuthService {
     return this._router.navigate(['/']);
   }
 
-  getUserName(): string {
-    return this._sessionService.getUser().username;
+  getUser(): User {
+    return this._sessionService.getUser();
   }
 }
