@@ -10,6 +10,7 @@ import {
   MatSidenavModule,
   MatToolbarModule
 } from "@angular/material";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [MatButtonModule,
@@ -20,6 +21,7 @@ import {
     MatIconModule,
     MatGridListModule,
     MatCardModule,
+    FormsModule,
     MatListModule,
     MatButtonModule,
     MatSidenavModule,

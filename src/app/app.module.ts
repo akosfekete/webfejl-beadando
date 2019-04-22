@@ -8,11 +8,14 @@ import {ProductService} from "./service/product.service";
 import {CartComponent} from './component/cart/cart.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MaterialModule} from "./material/material.module";
-import { SidenavComponent } from './component/sidenav/sidenav.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
-import { ProductDetailsComponent } from './component/product-details/product-details.component';
-import {FormsModule} from "@angular/forms";
+import {SidenavComponent} from './component/sidenav/sidenav.component';
+import {LayoutModule} from '@angular/cdk/layout';
+import {ProductDetailsComponent} from './component/product-details/product-details.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {SignupComponent} from './component/signup/signup.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {AuthGuard} from "./guard/auth.guard";
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,18 +23,24 @@ import {FormsModule} from "@angular/forms";
     ProductComponent,
     CartComponent,
     SidenavComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    SignupComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
+    FlexLayoutModule,
     BrowserAnimationsModule,
     MaterialModule,
     LayoutModule,
+    //RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    ProductService
+    ProductService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
