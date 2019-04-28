@@ -1,6 +1,6 @@
 <div id="cart">
   <mat-accordion class="headers-align">
-    <mat-expansion-panel *ngFor="let item of items">
+    <mat-expansion-panel [ngClass]="panelClass" *ngFor="let item of items">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{item.product.name}}

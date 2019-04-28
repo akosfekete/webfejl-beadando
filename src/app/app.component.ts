@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {map} from "rxjs/operators";
 import {AuthService} from "./service/auth.service";
+import {StyleService} from "./service/style.service";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit{
   isLoggedIn$: Observable<boolean>;
 
   constructor(private breakpointObserver: BreakpointObserver,
-              private authService: AuthService ) {}
+              private authService: AuthService,
+              private styleService: StyleService) {}
 
   ngOnInit(): void {
     this.isLoggedIn$ = this.authService.isLoggedIn;

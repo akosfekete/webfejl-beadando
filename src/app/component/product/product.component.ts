@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from "../../entity/product";
 import {ProductService} from "../../service/product.service";
+import {StyleService} from "../../service/style.service";
 
 @Component({
   selector: 'app-product',
@@ -10,8 +11,15 @@ import {ProductService} from "../../service/product.service";
 export class ProductComponent implements OnInit {
 
   products: Product[];
+  cardClasses: string[] = ['card1', 'card2', 'card3', 'card4', 'card5'];
+  bgClasses: string[] = ['bg1', 'bg2', 'bg3', 'bg4'];
+  cardClass: string;
+  bgClass: string;
+  addButtonClass: string;
+  detailsButtonClass: string;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,
+              private styleService: StyleService) {
 
   }
 

@@ -13,12 +13,16 @@ export class CartComponent implements OnInit {
 
   private items: Item[];
   private total: number = 0;
+  private panelClasses: string[] = ['panel1', 'panel2', 'panel3', 'panel4', 'panel5'];
+  panelClass: string;
 
   constructor(private activatedRoute: ActivatedRoute, private productService: ProductService) {
 
   }
 
   ngOnInit() {
+
+    this.updateClasses();
 
     this.activatedRoute.params.subscribe(params => {
       let id = params['id'];
@@ -64,6 +68,11 @@ export class CartComponent implements OnInit {
         this.loadCart();
       }
     })
+  }
+
+  private updateClasses(): void {
+    let panelNumber: number = Math.floor(Math.random() * 5);
+    this.panelClass = this.panelClasses[panelNumber];
   }
 
   private changeQuantity(id: string, quantity): void {
