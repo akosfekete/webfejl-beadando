@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Item} from "../../entity/item";
 import {ProductService} from "../../service/product.service";
+import {StyleService} from '../../service/style.service';
 
 
 @Component({
@@ -13,16 +14,15 @@ export class CartComponent implements OnInit {
 
   private items: Item[];
   private total: number = 0;
-  private panelClasses: string[] = ['panel1', 'panel2', 'panel3', 'panel4', 'panel5'];
-  panelClass: string;
+  panelClasses: string[] = [];
 
-  constructor(private activatedRoute: ActivatedRoute, private productService: ProductService) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private productService: ProductService,
+              private styleService: StyleService) {
 
   }
 
   ngOnInit() {
-
-    this.updateClasses();
 
     this.activatedRoute.params.subscribe(params => {
       let id = params['id'];
@@ -35,15 +35,11 @@ export class CartComponent implements OnInit {
         if (localStorage.getItem('cart') == null) {
           let cart: any = [];
           cart.push(item);
-          //what the fuck???
-          //cart.push(JSON.stringify(item));
           localStorage.setItem('cart', JSON.stringify(cart));
         } else {
           let cart: any = JSON.parse(localStorage.getItem('cart'));
           let index: number = -1;
           for (let i = 0; i < cart.length; i++) {
-            //FUUUUUUUUUUUUUUCK
-            //let item: Item = JSON.parse(cart[i]);
             let item: Item = cart[i];
             if (item.product.id == id) {
               index = i;
@@ -51,14 +47,11 @@ export class CartComponent implements OnInit {
             }
           }
           if (index == -1) {
-            //cart.push(JSON.stringify(item));
             cart.push(item);
             localStorage.setItem('cart', JSON.stringify(cart));
           } else {
-            //let item: Item = JSON.parse(cart[index]);
             let item: Item = cart[index];
             item.quantity += 1;
-            //cart[index] = JSON.stringify(item);
             cart[index] = item;
             localStorage.setItem('cart', JSON.stringify(cart));
           }
@@ -67,12 +60,15 @@ export class CartComponent implements OnInit {
       } else {
         this.loadCart();
       }
-    })
+    });
+
+    this.updateClasses();
   }
 
   private updateClasses(): void {
-    let panelNumber: number = Math.floor(Math.random() * 5);
-    this.panelClass = this.panelClasses[panelNumber];
+    for (let item of this.items) {
+      this.panelClasses[item.product.id] = this.styleService.getRandomAccordionClass();
+    }
   }
 
   private changeQuantity(id: string, quantity): void {
@@ -102,8 +98,6 @@ export class CartComponent implements OnInit {
     if (cart === null) return;
 
     for (let i = 0; i < cart.length; i++) {
-      //fucking retarted gaerbaegeeg who wrote this
-      //let item = JSON.parse(cart[i]);
       let item: Item = cart[i];
       this.items.push({
         product: item.product,
@@ -117,8 +111,6 @@ export class CartComponent implements OnInit {
     let cart: any = JSON.parse(localStorage.getItem('cart'));
     let index: number = -1;
     for (let i = 0; i < cart.length; i++) {
-      //fuck
-      //let item: Item = JSON.parse(cart[i]);
       let item: Item = cart[i];
       if (item.product.id == id) {
         cart.splice(i, 1);

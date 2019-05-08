@@ -3,21 +3,15 @@
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="!(isHandset$ | async)">
-    <mat-toolbar [ngClass]="styleService.getRandomFontClass()">Menu</mat-toolbar>
+    <mat-toolbar [ngClass]="headerFontClass">Menu</mat-toolbar>
     <mat-nav-list>
-      <a [ngClass]="styleService.getRandomFontClass()"  mat-list-item routerLink="/products" routerLinkActive="active">Products</a>
-      <a [ngClass]="styleService.getRandomFontClass()"  mat-list-item routerLink="/cart" routerLinkActive="active">Cart</a>
-   <!--   <ng-template *ngIf="(isLoggedIn$ | async); else elseDiv;">
-        <a mat-list-item href="#">{{authService.getUser()}}</a>
-      </ng-template>
-      <ng-template #elseDiv>
-        <a mat-list-item routerLink="/signup" routerLinkActive="active">Log in</a>
-      </ng-template>-->
-      <a [ngClass]="styleService.getRandomFontClass()"  mat-list-item routerLink="/signup" routerLinkActive="active" *ngIf="!(isLoggedIn$ | async);">Log in</a>
-      <a [ngClass]="styleService.getRandomFontClass()"  mat-list-item routerLink="/dashboard" routerLinkActive="active" *ngIf="(isLoggedIn$ | async);">{{authService.getUser().username}}</a>
+      <a [ngClass]="menuFontClass"  mat-list-item routerLink="/products" routerLinkActive="active">Products</a>
+      <a [ngClass]="menuFontClass"  mat-list-item routerLink="/cart" routerLinkActive="active">Cart</a>
+      <a [ngClass]="menuFontClass"  mat-list-item routerLink="/signup" routerLinkActive="active" *ngIf="!(isLoggedIn$ | async);">Log in</a>
+      <a [ngClass]="menuFontClass"  mat-list-item routerLink="/dashboard" routerLinkActive="active" *ngIf="(isLoggedIn$ | async);">{{authService.getUser().username}}</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content [ngClass]="styleService.getRandomColorClass()">
+  <mat-sidenav-content [ngClass]="backgroundClass">
     <mat-toolbar color="primary">
       <button
         type="button"
@@ -27,7 +21,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span [ngClass]="styleService.getRandomFontClass()">Anyád picsája</span>
+      <span [ngClass]="titleFontClass">Anyád picsája</span>
     </mat-toolbar>
       <div id="main-container">
         <router-outlet></router-outlet>

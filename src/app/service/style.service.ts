@@ -13,11 +13,15 @@ export class StyleService {
 
   private colorClasses: string[] = ['color1', 'color2', 'color3', 'color4', 'color5', 'color6', 'color7', 'color8', 'color9', 'color10'];
 
+  private patternClasses: string[] = ['pattern1', 'pattern2', 'pattern3', 'pattern4', 'pattern5', 'pattern6', 'pattern7', 'pattern8',
+    'pattern9', 'pattern10'];
+
   private bgClasses: string[] = ['bg1', 'bg2', 'bg3', 'bg4'];
 
+  private accordionClasses: string[] = ['panel1', 'panel2', 'panel3', 'panel4', 'panel5'];
+
   getRandomFontClass(): string {
-    let fontNum: number = Math.floor(Math.random() * 16);
-    return this.fontsClasses[fontNum];
+    return this.fontsClasses[this.getRandomNr(16)];
   }
 
   getRandomProductClass(): string {
@@ -31,6 +35,14 @@ export class StyleService {
 
   getRandomColorClass(): string {
     return this.colorClasses[this.getRandomNr(9)];
+  }
+
+  getRandomAccordionClass(): string {
+    return this.accordionClasses[this.getRandomNr(4)];
+  }
+
+  getRandomPatternClass(): string {
+    return this.patternClasses[this.getRandomNr(9)];
   }
 
   private getRandomNr(max: number): number {
