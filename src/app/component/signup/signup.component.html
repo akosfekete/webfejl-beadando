@@ -1,6 +1,6 @@
 <div class="signup-form">
   <mat-error *ngIf="message">{{message}}</mat-error>
-  <form [formGroup]="loginForm" fxLayout="column" (ngSubmit)="login()">
+  <form [formGroup]="loginForm" fxLayout="column" (ngSubmit)="login()" [ngClass]="bgColorStyle" >
     <mat-form-field>
       <input type="text" matInput placeholder="username" name="username" formControlName="userid">
     </mat-form-field>

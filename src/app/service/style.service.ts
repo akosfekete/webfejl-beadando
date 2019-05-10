@@ -20,6 +20,8 @@ export class StyleService {
 
   private accordionClasses: string[] = ['panel1', 'panel2', 'panel3', 'panel4', 'panel5'];
 
+  private imageClasses: string[] = ['image1', 'image2', 'image3', 'image4', 'image5'];
+
   getRandomFontClass(): string {
     return this.fontsClasses[this.getRandomNr(16)];
   }
@@ -43,6 +45,10 @@ export class StyleService {
 
   getRandomPatternClass(): string {
     return this.patternClasses[this.getRandomNr(9)];
+  }
+
+  getRandomImageClass(): string {
+    return this.imageClasses[this.getRandomNr(4)];
   }
 
   private getRandomNr(max: number): number {

@@ -1,15 +1,16 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, DoCheck, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
 import {User} from "../../interface/user";
 import {AuthService} from "../../service/auth.service";
+import {StyleService} from '../../service/style.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.sass']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, DoCheck{
 
   model: User = {
     username: 'admin',
@@ -26,9 +27,11 @@ export class SignupComponent implements OnInit {
   loginForm: FormGroup;
   message: string;
   returnUrl: string;
+  bgColorStyle: string;
 
   constructor(private formBuilder: FormBuilder, private router: Router,
-              public authService: AuthService) { }
+              public authService: AuthService,
+              private styleService: StyleService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -58,5 +61,11 @@ export class SignupComponent implements OnInit {
       }
     }
   }
+
+  ngDoCheck(): void {
+   this.bgColorStyle = this.styleService.getRandomColorClass();
+  }
+
+
 
 }
