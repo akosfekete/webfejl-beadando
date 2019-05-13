@@ -12,8 +12,8 @@ import {StyleService} from '../../service/style.service';
 })
 export class CartComponent implements OnInit {
 
-  private items: Item[];
-  private total: number = 0;
+  items: Item[];
+  total = 0;
   panelClasses: string[] = [];
 
   constructor(private activatedRoute: ActivatedRoute,

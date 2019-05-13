@@ -1,2 +1,17 @@
-<button mat-raised-button (click)="logout()">LOG OUT</button>
-<img src="assets/images/{{authService.getUser().profilePic}}">
+<mat-card class="user-card" [ngClass]="cardStyle">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{authService.getUser().username}}</mat-card-title>
+    <mat-card-subtitle>{{authService.getUser().email}}</mat-card-subtitle>
+  </mat-card-header>
+  <img src="assets/images/{{authService.getUser().profilePic}}" alt="profilePic" [ngClass]="imageStyle"/>
+  <mat-card-content>
+    <p>
+      {{authService.getUser().description}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="logout()">LOG OUT</button>
+  </mat-card-actions>
+</mat-card>
+

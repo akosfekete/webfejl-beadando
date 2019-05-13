@@ -22,6 +22,8 @@ export class StyleService {
 
   private imageClasses: string[] = ['image1', 'image2', 'image3', 'image4', 'image5'];
 
+  private listClasses: string[] = ['list1', 'list2', 'list3', 'list4', 'list5'];
+
   getRandomFontClass(): string {
     return this.fontsClasses[this.getRandomNr(16)];
   }
@@ -49,6 +51,10 @@ export class StyleService {
 
   getRandomImageClass(): string {
     return this.imageClasses[this.getRandomNr(4)];
+  }
+
+  getRandomListClass(): string {
+    return this.listClasses[this.getRandomNr(4)];
   }
 
   private getRandomNr(max: number): number {

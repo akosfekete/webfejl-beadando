@@ -16,6 +16,7 @@ import {SignupComponent} from './component/signup/signup.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {AuthGuard} from "./guard/auth.guard";
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { PayComponent } from './component/pay/pay.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
     SidenavComponent,
     ProductDetailsComponent,
     SignupComponent,
-    DashboardComponent
+    DashboardComponent,
+    PayComponent
   ],
   imports: [
     BrowserModule,

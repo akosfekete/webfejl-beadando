@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../service/auth.service";
+import {Component, DoCheck, OnInit} from '@angular/core';
+import {AuthService} from '../../service/auth.service';
+import {StyleService} from '../../service/style.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.sass']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, DoCheck {
 
-  constructor(private authService: AuthService) { }
+  imageStyle: string;
+  cardStyle: string;
+
+  constructor(public authService: AuthService,
+              private styleService: StyleService) { }
 
   ngOnInit() {
   }
@@ -17,4 +22,8 @@ export class DashboardComponent implements OnInit {
     this.authService.logout();
   }
 
+  ngDoCheck(): void {
+    this.imageStyle = this.styleService.getRandomImageClass();
+    this.cardStyle = this.styleService.getRandomColorClass();
+  }
 }

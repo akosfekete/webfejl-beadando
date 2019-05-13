@@ -1,0 +1,40 @@
+@import ../../../styles
+@import list_item
+@import ../../colors_common
+
+mat-list
+  +flex-layout-default(column, center)
+  width: 80%
+  margin: $default-margin auto
+  img
+    width: 60px
+    border-radius: 100px
+
+mat-list-item
+  margin: 30px
+  h4
+    margin: 80px
+    text-align: center
+  p
+    text-align: center
+    font-size: 30px
+
+.total
+  +flex-layout-default(column, center)
+  margin: $default-margin
+
+.pay-form
+  width: 60%
+  border-radius: 30px
+  padding: $default-margin
+  box-shadow:         inset 0 0 10px #000000
+
+.pay-full-width
+  width: 100%
+
+.pay-form-container
+  +flex-layout-default(column, center)
+
+td
+  padding-right: 8px
+

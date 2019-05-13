@@ -1,0 +1,52 @@
+<mat-list>
+<!--  <h3 mat-subheader>Folders</h3>-->
+  <mat-list-item *ngFor="let item of items">
+    <img src="assets/images/{{item.product.photo}}"/>
+    <h4 mat-line [ngClass]="itemStyles[item.product.name]">Név: {{item.product.name}}</h4>
+    <p [ngClass]="itemStyles[item.product.name]" mat-line>Ár:  {{item.product.price}} </p>
+    <p [ngClass]="itemStyles[item.product.name]" mat-line>Mennyiség {{item.quantity}} </p>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>
+<div class="total">
+  Összesen {{total}}
+</div>
+
+<div class="pay-form-container">
+  <form class="pay-form" [ngClass]="formBackground">
+    <table class="pay-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="pay-full-width">
+        <input matInput placeholder="Vezetéknév" value="{{authService.getUser().username}}">
+      </mat-form-field></td>
+      <td><mat-form-field class="pay-full-width">
+        <input matInput placeholder="Keresztnév">
+      </mat-form-field></td>
+    </tr></table>
+
+    <p>
+      <mat-form-field class="pay-full-width">
+        <textarea matInput placeholder="Cím"></textarea>
+      </mat-form-field>
+      <mat-form-field class="pay-full-width">
+        <textarea matInput placeholder="Házszám"></textarea>
+      </mat-form-field>
+    </p>
+
+    <table class="pay-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="pay-full-width">
+        <input matInput placeholder="Város">
+      </mat-form-field></td>
+      <td><mat-form-field class="pay-full-width">
+        <input matInput placeholder="Megye">
+      </mat-form-field></td>
+      <td><mat-form-field class="pay-full-width">
+        <input matInput #postalCode maxlength="5" placeholder="Irányítószám">
+        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+      </mat-form-field></td>
+    </tr></table>
+  </form>
+</div>
+<div class="total">
+  <button mat-button [ngClass]="formBackground">VÁSÁRLÁS</button>
+</div>
+
